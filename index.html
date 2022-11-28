@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word counter</title>
+    <style>
+   
+        .container{
+            text-align: center;
+            transform: translateY(20%);
+            max-width: 1150px;
+            margin: auto;
+            
+        }
+        h1{
+            background-color: blueviolet;
+            color: white;
+            font-weight: bold;
+            padding: 30px;
+        }
+        #textarea{
+            width: 98%;
+            margin: -22px 0px;
+            /* padding: 40px 0px; */
+            height: 40vh;
+            font-size: 20px;
+            padding: 0px 0px 0px 20px;
+            background-color:azure;
+        
+        }
+        p{
+            background-color: blueviolet;
+            padding: 30px;
+            margin: 18px 0px;
+            font-size:30px;
+            color: white;
+            font-weight: bold;
+            
+        }
+        .color-container{
+            text-align: right;
+            margin: 30px 50px 0px 0px;
+        }
+        .btn{
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        #white{
+            background-color: white;
+        }
+        #black{
+            background-color:#1c1919;
+        }
+        #violet{
+            background-color: violet;
+        }
+        #aqua{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="color-container">
+        <span class="btn" id="white" onclick="changebg('white')"></span>
+        <span class="btn" id="black" onclick="changebg('#1c1919')"></span>
+        <span class="btn" id="violet" onclick="changebg('violet')"></span>
+        <span class="btn" id="aqua" onclick="changebg('aqua')"></span>
+    </div>
+    <div class="container">
+        <h1>Word and character Counter</h1>
+        <textarea name="" id="textarea" cols="30" rows="10"></textarea>
+        <p>
+            <span id="word">0</span> Words and <span id="charaters">0</span> characters
+        </p>
+    </div>
+    <script>
+        let text = document.getElementById("textarea");
+        let word = document.getElementById("word");
+        let char = document.getElementById("charaters");
+        text.addEventListener('input',function(){
+            let val = this.value;
+            let ch = val.length;
+            char.innerHTML = ch;
+
+            val=val.trim();
+            let wrd = val.split(" ");
+            let clean = wrd.filter(function (ele){
+                     return ele !="";
+            });
+            word.innerHTML = clean.length;
+
+
+        });
+        function changebg (color){
+            document.body.style.backgroundColor = color;
+
+        }
+    </script>
+</body>
+</html>
